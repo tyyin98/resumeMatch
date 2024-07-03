@@ -4,7 +4,7 @@ const dummy = ["apple", "orange", "peach", "cucumber"];
 
 export async function POST(req: Request) {
   const { resume, jobDescription } = await req.json();
-  console.log(resume, jobDescription);
+  //   console.log(resume, jobDescription);
 
   const listOfKeywords = await callOpenai({ resume, jobDescription });
 
