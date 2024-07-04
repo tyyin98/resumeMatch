@@ -102,13 +102,13 @@ export default function Login({
           Sign In
         </SubmitButton>
         {/* prevent users from signing up by themselves */}
-        {/* <SubmitButton
+        <SubmitButton
           formAction={signUp}
           className="border border-foreground/20 rounded-md px-4 py-2 text-foreground mb-2"
           pendingText="Signing Up..."
         >
           Sign Up
-        </SubmitButton> */}
+        </SubmitButton>
         {searchParams?.message && (
           <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
             {searchParams.message}

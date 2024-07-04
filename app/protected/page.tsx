@@ -5,6 +5,7 @@ import FetchDataSteps from "@/components/tutorial/FetchDataSteps";
 import Header from "@/components/Header";
 import { redirect } from "next/navigation";
 import ResumeMatch from "@/components/ResumeMatch/ResumeMatch";
+// import { useChat } from "ai/react";
 
 export default async function ProtectedPage() {
   const supabase = createClient();
