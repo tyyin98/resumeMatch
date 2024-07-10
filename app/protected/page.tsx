@@ -34,7 +34,6 @@ export default async function ProtectedPage() {
       <div className="flex-1 flex flex-col gap-20 max-w-4xl px-3">
         <Header />
         <main className="flex-1 flex flex-col gap-6">
-          <h1>put the resume and jd here</h1>
           <ResumeMatch />
           <ResumeMatchComp />
         </main>
