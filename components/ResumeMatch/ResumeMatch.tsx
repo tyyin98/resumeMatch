@@ -5,10 +5,12 @@ export default function ResumeMatch() {
   const [resume, setResume] = useState("");
   const [jobDescription, setJobDescription] = useState("");
   const [keywords, setKeywords] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    setIsLoading(true);
     try {
       const response = await fetch("/api", {
         method: "POST",
@@ -24,6 +26,7 @@ export default function ResumeMatch() {
     } catch (error) {
       console.error("Error:", error);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -32,7 +35,10 @@ export default function ResumeMatch() {
         <h1>Resume Keyword Generator</h1>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Resume:</label>
+            <div>
+              <label>Resume:</label>
+            </div>
+
             <textarea
               value={resume}
               onChange={(e) => setResume(e.target.value)}
@@ -41,7 +47,10 @@ export default function ResumeMatch() {
             />
           </div>
           <div>
-            <label>Job Description:</label>
+            <div>
+              <label>Job Description:</label>
+            </div>
+
             <textarea
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
@@ -54,6 +63,7 @@ export default function ResumeMatch() {
         {keywords && (
           <div>
             <h2>Keywords:</h2>
+            {isLoading ? <div>Loading...</div> : null}
             <ul>
               {keywords.map((keyword: any, index: any) => (
                 <li key={index}>{keyword}</li>
