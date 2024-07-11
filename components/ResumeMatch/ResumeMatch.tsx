@@ -30,12 +30,12 @@ export default function ResumeMatch() {
   };
 
   return (
-    <div className="w-full md:w-1/2 lg:w-1/3">
+    <div className="w-full ">
       <h1>Resume Keyword Generator</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <div>
-            <label className="w-full md:w-1/2 lg:w-1/3 ">Resume:</label>
+            <label className="w-full">Resume:</label>
           </div>
 
           <textarea
