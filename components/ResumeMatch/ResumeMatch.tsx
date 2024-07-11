@@ -30,48 +30,43 @@ export default function ResumeMatch() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Resume Keyword Generator</h1>
-        <form onSubmit={handleSubmit}>
+    <div className="w-full md:w-1/2 lg:w-1/3">
+      <h1>Resume Keyword Generator</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
           <div>
-            <div>
-              <label>Resume:</label>
-            </div>
+            <label className="w-full md:w-1/2 lg:w-1/3 ">Resume:</label>
+          </div>
 
-            <textarea
-              value={resume}
-              onChange={(e) => setResume(e.target.value)}
-              rows={10}
-              cols={50}
-            />
-          </div>
+          <textarea
+            className="w-full  p-4 border border-gray-300 rounded-lg resize-y"
+            value={resume}
+            onChange={(e) => setResume(e.target.value)}
+          />
+        </div>
+        <div>
           <div>
-            <div>
-              <label>Job Description:</label>
-            </div>
-
-            <textarea
-              value={jobDescription}
-              onChange={(e) => setJobDescription(e.target.value)}
-              rows={10}
-              cols={50}
-            />
+            <label>Job Description:</label>
           </div>
-          <button type="submit">Submit</button>
-        </form>
-        {keywords && (
-          <div>
-            <h2>Keywords:</h2>
-            {isLoading ? <div>Loading...</div> : null}
-            <ul>
-              {keywords.map((keyword: any, index: any) => (
-                <li key={index}>{keyword}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </header>
+          <textarea
+            className="w-full  p-4 border border-gray-300 rounded-lg resize-y"
+            value={jobDescription}
+            onChange={(e) => setJobDescription(e.target.value)}
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      {keywords && (
+        <div>
+          <h2>Keywords:</h2>
+          {isLoading ? <div>Loading...</div> : null}
+          <ul>
+            {keywords.map((keyword: any, index: any) => (
+              <li key={index}>{keyword}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
