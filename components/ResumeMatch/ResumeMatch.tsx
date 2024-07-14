@@ -35,9 +35,9 @@ export default function ResumeMatch({ email }: { email: string | undefined }) {
       <h1>Resume Keyword Generator</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <div>
+          {/* <div>
             <label className="w-full">Resume:</label>
-          </div>
+          </div> */}
 
           {/* <textarea
             className="w-full  p-4 border border-gray-300 rounded-lg resize-y"
