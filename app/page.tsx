@@ -7,6 +7,16 @@ import Header from "@/components/Header";
 import Head from "next/head";
 import Link from "next/link";
 import Logo from "@/components/Logo";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
 
 export default async function Index() {
   const canInitSupabaseClient = () => {
