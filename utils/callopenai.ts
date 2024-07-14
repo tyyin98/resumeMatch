@@ -9,9 +9,8 @@ interface CallOpenaiParams {
 }
 
 export async function callOpenai({ resume, jobDescription }: CallOpenaiParams) {
-  const prompt = `Your job is to give me a list of key words (such as techniques and skills) that I can add to my resume so that the resume matches the job description more.
-      Please only give me a list of the keywords, separated by commas. The list should contain no more than 30 words.
-      Here is my resume: ${resume}
+  const prompt = `Please have a look at the following job description. What kind of skills and techniques do you think I should have to be more competent for this role? Please give me a list of skills and techniques, separated by commas. The list should contain no more than 30 elements. Please be sure the list is separated by commas.
+    
       Here is the job description: ${jobDescription}`;
 
   const completion = await openai.chat.completions.create({
@@ -20,7 +19,11 @@ export async function callOpenai({ resume, jobDescription }: CallOpenaiParams) {
   });
 
   const result = completion.choices[0].message?.content || "";
+  console.log(result);
   const listOfKeywords = result.split(",").map((keyword) => keyword.trim());
-
-  return listOfKeywords;
+  const listOfKeywords2 = result.split("-").map((keyword) => keyword.trim());
+  if (listOfKeywords.length > listOfKeywords2.length) {
+    return listOfKeywords;
+  }
+  return listOfKeywords2;
 }

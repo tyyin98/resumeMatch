@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { SubmitButton } from "./submit-button";
+import { initNewUser } from "@/utils/supabase/initNewUser";
 
 export default function Login({
   searchParams,
@@ -24,6 +25,8 @@ export default function Login({
     if (error) {
       return redirect("/login?message=Could not authenticate user");
     }
+
+    // initNewUser(email);
 
     return redirect("/protected");
   };
@@ -48,6 +51,8 @@ export default function Login({
       console.log(error);
       return redirect("/login?message=Could not authenticate user");
     }
+
+    initNewUser(email);
 
     return redirect("/login?message=Check email to continue sign in process");
   };

@@ -34,8 +34,10 @@ export default async function Index() {
       <div className="flex-1 flex flex-col gap-20 max-w-4xl px-3">
         <Header />
         <main className="flex-1 flex flex-col gap-6">
-          <Link className="text-center text-4xl font-bold" href="/protected">
-            Start
+          <Link className="flex justify-center" href="/protected">
+            <div className=" inline-block text-center text-4xl font-bold bg-black text-white py-2 px-4 rounded hover:bg-gray-800">
+              Start
+            </div>
           </Link>
           {/* {isSupabaseConnected ? (
               <SignUpUserSteps />
