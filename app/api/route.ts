@@ -1,5 +1,6 @@
 import { callOpenai } from "@/utils/callopenai";
 import { createClient } from "@/utils/supabase/server";
+import { revalidatePath } from "next/cache";
 
 const dummy = ["apple", "orange", "peach", "cucumber"];
 

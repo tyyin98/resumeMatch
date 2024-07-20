@@ -31,19 +31,8 @@ export default function ResumeMatch({ email }: { email: string | undefined }) {
   };
 
   return (
-    <div className="w-full ">
+    <div className="w-full">
       <form onSubmit={handleSubmit}>
-        <div>
-          {/* <div>
-            <label className="w-full">Resume:</label>
-          </div> */}
-
-          {/* <textarea
-            className="w-full  p-4 border border-gray-300 rounded-lg resize-y"
-            value={resume}
-            onChange={(e) => setResume(e.target.value)}
-          /> */}
-        </div>
         <div>
           <div>
             <label>Job Description here:</label>
@@ -54,6 +43,7 @@ export default function ResumeMatch({ email }: { email: string | undefined }) {
             onChange={(e) => setJobDescription(e.target.value)}
           />
         </div>
+
         <button type="submit" className="w-full">
           <div className=" bg-slate-400 text-white rounded-full px-8 py-2 cursor-pointer hover:bg-gray-800">
             Submit
@@ -61,7 +51,7 @@ export default function ResumeMatch({ email }: { email: string | undefined }) {
         </button>
       </form>
       {keywords && (
-        <div>
+        <div className="w-1/2">
           <h2>Keywords:</h2>
           {isLoading ? <div>Loading...</div> : null}
           <ul>

@@ -3,6 +3,10 @@ import { redirect } from "next/navigation";
 import React from "react";
 import Navbar from "@/components/navbar";
 
+export const fetchCache = "force-no-store";
+export const revalidate = 0; // seconds
+export const dynamic = "force-dynamic";
+
 export default async function profile() {
   async function getUserCredits(email: string | undefined) {
     const { data, error } = await supabase
