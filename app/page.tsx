@@ -37,7 +37,7 @@ export default async function Index() {
         <Header />
         <main className="flex-1 flex flex-col gap-6">
           <Link className="flex justify-center" href="/protected">
-            <div className=" inline-block text-center text-4xl font-bold bg-black text-white py-2 px-4 rounded hover:bg-gray-800">
+            <div className=" inline-block  bg-black text-white rounded-full px-8 py-2 cursor-pointer hover:bg-gray-800">
               Start
             </div>
           </Link>
