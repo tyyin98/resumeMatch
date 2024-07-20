@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "@/components/Logo";
 import { createClient } from "@/utils/supabase/server";
-import AuthButton from "../AuthButton";
+import AuthButton from "./AuthButton";
 
 export default function Navbar() {
   const canInitSupabaseClient = () => {

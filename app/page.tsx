@@ -7,7 +7,7 @@ import Header from "@/components/Header";
 import Head from "next/head";
 import Link from "next/link";
 import Logo from "@/components/Logo";
-import Navbar from "@/components/ui/navbar";
+import Navbar from "@/components/navbar";
 
 export default async function Index() {
   const canInitSupabaseClient = () => {

@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import ResumeMatch from "@/components/ResumeMatch/ResumeMatch";
 import ResumeMatchComp from "@/components/ResumeMatch/ReSumeMatchUseComp";
 import Logo from "@/components/Logo";
-import Navbar from "@/components/ui/navbar";
+import Navbar from "@/components/navbar";
 // import { useChat } from "ai/react";
 
 export default async function ProtectedPage() {

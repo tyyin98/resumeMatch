@@ -1,7 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import React from "react";
-import Navbar from "@/components/ui/navbar";
+import Navbar from "@/components/navbar";
 
 export default async function profile() {
   async function getUserCredits(email: string | undefined) {
@@ -28,10 +28,11 @@ export default async function profile() {
   return (
     <div>
       <Navbar />
-      <div className="flex justify-center flex-col">
-        <div>profile</div>
-        <div>email: {user.email}</div>
-        <div>credits: {credits}</div>
+      <div className="w-full flex justify-center ">
+        <div>
+          <div>email: {user.email}</div>
+          <div>credits: {credits}</div>
+        </div>
       </div>
     </div>
   );
