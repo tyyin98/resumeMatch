@@ -21,7 +21,7 @@ export default async function AuthButton() {
     <div className="flex items-center gap-4">
       {/* Hey, {user.email}! */}
       <Link href="/profile">
-        <div className="bg-black text-white rounded-full px-8 py-2 cursor-pointer hover:bg-gray-800">
+        <div className="bg-white text-black border-2 border-black rounded-full px-8 py-2 cursor-pointer hover:bg-gray-100">
           Profile
         </div>
       </Link>

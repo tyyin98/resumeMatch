@@ -32,7 +32,6 @@ export default function ResumeMatch({ email }: { email: string | undefined }) {
 
   return (
     <div className="w-full ">
-      <h1>Resume Keyword Generator</h1>
       <form onSubmit={handleSubmit}>
         <div>
           {/* <div>
@@ -47,15 +46,19 @@ export default function ResumeMatch({ email }: { email: string | undefined }) {
         </div>
         <div>
           <div>
-            <label>Job Description:</label>
+            <label>Job Description here:</label>
           </div>
           <textarea
-            className="w-full  p-4 border border-gray-300 rounded-lg resize-y"
+            className="w-full p-4 border border-gray-300 rounded-lg resize-y"
             value={jobDescription}
             onChange={(e) => setJobDescription(e.target.value)}
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" className="w-full">
+          <div className=" bg-slate-400 text-white rounded-full px-8 py-2 cursor-pointer hover:bg-gray-800">
+            Submit
+          </div>
+        </button>
       </form>
       {keywords && (
         <div>
