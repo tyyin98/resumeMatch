@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import ResumeMatch from "@/components/ResumeMatch/ResumeMatch";
 import ResumeMatchComp from "@/components/ResumeMatch/ReSumeMatchUseComp";
 import Logo from "@/components/Logo";
+import Navbar from "@/components/ui/navbar";
 // import { useChat } from "ai/react";
 
 export default async function ProtectedPage() {
@@ -25,12 +26,13 @@ export default async function ProtectedPage() {
   return (
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
       <div className="w-full">
-        <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
+        <Navbar />
+        {/* <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
           <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
             <Logo />
             <AuthButton />
           </div>
-        </nav>
+        </nav> */}
       </div>
 
       <div className="flex-1 flex flex-col gap-20 max-w-4xl px-3">
