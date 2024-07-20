@@ -2,22 +2,15 @@ import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import React from "react";
 import Navbar from "@/components/navbar";
+import Credits from "@/components/Credits";
+import { getUserCredits } from "@/utils/supabase/getUserCredits";
 
 export const fetchCache = "force-no-store";
 export const revalidate = 0; // seconds
 export const dynamic = "force-dynamic";
 
 export default async function profile() {
-  async function getUserCredits(email: string | undefined) {
-    const { data, error } = await supabase
-      .from("usage")
-      .select("credits_left")
-      .eq("userID", email)
-      .single();
-
-    // console.log(`profile page`, email);
-    return data?.credits_left;
-  }
+  console.log("landed '/proile' ");
 
   const supabase = createClient();
 
@@ -29,12 +22,16 @@ export default async function profile() {
     return redirect("/login");
   }
   const credits = await getUserCredits(user?.email);
+
   return (
     <div>
       <Navbar />
       <div className="w-full flex justify-center ">
         <div>
           <div>email: {user.email}</div>
+          {/* <div>
+            credits: <Credits email={user?.email} />
+          </div> */}
           <div>credits: {credits}</div>
         </div>
       </div>

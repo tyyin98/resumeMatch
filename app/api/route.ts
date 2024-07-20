@@ -29,6 +29,9 @@ export async function POST(req: Request) {
       .update({ credits_left: updatedCreditsLeft })
       .eq("userID", email);
 
+    revalidatePath("/profile");
+    console.log("revalidated");
+
     const listOfKeywords = await callOpenai({ resume, jobDescription });
 
     return new Response(JSON.stringify(listOfKeywords), {
