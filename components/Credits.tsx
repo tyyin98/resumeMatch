@@ -2,24 +2,6 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
-import { createClient } from "@/utils/supabase/client";
-
-const supabase = createClient();
-
-async function getUserCredits(email: string | undefined) {
-  const { data, error } = await supabase
-    .from("usage")
-    .select("credits_left")
-    .eq("userID", email)
-    .single();
-
-  if (error) {
-    console.error("Error fetching credits:", error);
-    return null;
-  }
-
-  return data?.credits_left;
-}
 
 export default function Credits({ email }: { email: string | undefined }) {
   const [credits, setCredits] = useState(null);
@@ -30,7 +12,14 @@ export default function Credits({ email }: { email: string | undefined }) {
     const fetchCredits = async () => {
       setLoading(true);
       try {
-        const creditsLeft = await getUserCredits(email);
+        const data = await fetch("/api/userdata", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        const creditsLeft = await data.json();
+        console.log(creditsLeft);
         setCredits(creditsLeft);
       } catch (err) {
         // setError(err);

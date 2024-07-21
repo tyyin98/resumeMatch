@@ -29,9 +29,9 @@ export default async function profile() {
       <div className="w-full flex justify-center ">
         <div>
           <div>email: {user.email}</div>
-          {/* <div>
+          <div>
             credits: <Credits email={user?.email} />
-          </div> */}
+          </div>
           <div>credits: {credits}</div>
         </div>
       </div>

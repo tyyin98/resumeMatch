@@ -10,6 +10,7 @@ export async function POST(req: Request) {
   //   console.log(resume, jobDescription);
 
   try {
+    console.log("processing jd");
     const { data, error } = await supabase
       .from("usage")
       .select("credits_left")
@@ -44,8 +45,8 @@ export async function POST(req: Request) {
   }
 }
 
-export function GET() {
-  return new Response("GETTT");
-}
+// export function GET() {
+//   return new Response("GETTT");
+// }
 
 // export function POST(request: Request) {}

@@ -13,7 +13,7 @@ export default function ResumeMatch({ email }: { email: string | undefined }) {
 
     setIsLoading(true);
     try {
-      const response = await fetch("/api", {
+      const response = await fetch("/api/processjd", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

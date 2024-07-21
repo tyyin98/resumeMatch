@@ -4,11 +4,10 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 interface CallOpenaiParams {
-  resume: string;
   jobDescription: string;
 }
 
-export async function callOpenai({ resume, jobDescription }: CallOpenaiParams) {
+export async function callOpenai({ jobDescription }: CallOpenaiParams) {
   const prompt = `Please have a look at the following job description. What kind of skills and techniques do you think I should have to be more competent for this role? Please give me a list of skills and techniques, separated by commas. The list should contain no more than 30 elements. Please be sure the list is separated by commas.
     
       Here is the job description: ${jobDescription}`;
