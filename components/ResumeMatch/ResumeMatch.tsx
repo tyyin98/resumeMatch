@@ -31,7 +31,7 @@ export default function ResumeMatch({ email }: { email: string | undefined }) {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full max-w-lg mx-auto">
       <form onSubmit={handleSubmit}>
         <div>
           <div>
@@ -51,7 +51,7 @@ export default function ResumeMatch({ email }: { email: string | undefined }) {
         </button>
       </form>
       {keywords && (
-        <div className="w-1/2">
+        <div>
           <h2>Keywords:</h2>
           {isLoading ? <div>Loading...</div> : null}
           <ul>

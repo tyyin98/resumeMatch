@@ -11,8 +11,8 @@ import { unstable_noStore } from "next/cache";
 // export const dynamic = "force-dynamic";
 
 export default async function profile() {
-  console.log("landed '/proile' ");
-  unstable_noStore();
+  // console.log("landed '/proile' ");
+  // unstable_noStore();
 
   const supabase = createClient();
 
@@ -23,7 +23,8 @@ export default async function profile() {
   if (!user) {
     return redirect("/login");
   }
-  const credits = await getUserCredits(user?.email);
+  const email = user.email;
+  const credits = await getUserCredits(email);
 
   return (
     <div>
@@ -34,7 +35,7 @@ export default async function profile() {
           <div>
             credits: <Credits email={user?.email} />
           </div>
-          <div>credits: {credits}</div>
+          {/* <div>credits: {credits}</div> */}
         </div>
       </div>
     </div>

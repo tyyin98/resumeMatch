@@ -18,7 +18,7 @@ export async function callOpenai({ jobDescription }: CallOpenaiParams) {
   });
 
   const result = completion.choices[0].message?.content || "";
-  console.log(result);
+  // console.log(result);
   const listOfKeywords = result.split(",").map((keyword) => keyword.trim());
   const listOfKeywords2 = result.split("-").map((keyword) => keyword.trim());
   if (listOfKeywords.length > listOfKeywords2.length) {

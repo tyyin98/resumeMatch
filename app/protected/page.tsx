@@ -37,7 +37,7 @@ export default async function ProtectedPage() {
 
       <div className="flex-1 flex flex-col gap-20 max-w-4xl px-3">
         <Header />
-        <main className="flex-1 flex flex-col gap-6">
+        <main className="flex flex-col gap-6">
           <ResumeMatch email={user.email} />
         </main>
       </div>

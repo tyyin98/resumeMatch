@@ -32,7 +32,7 @@ export default function Credits({ email }: { email: string | undefined }) {
     }
   }, [email]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <span>LOADING...</span>;
   if (error) return <div>Error fetching credits</div>;
 
   return <span>{credits}</span>;

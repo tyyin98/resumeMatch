@@ -1,9 +1,12 @@
 import { callOpenai } from "@/utils/callopenai";
 import { revalidatePath } from "next/cache";
+
 import {
   getUserCredits,
   updateUserCredits,
 } from "@/utils/supabase/supabaseCrud";
+
+export const revalidate = true;
 
 export async function POST(req: Request) {
   const { jobDescription, email } = await req.json();
@@ -19,9 +22,10 @@ export async function POST(req: Request) {
 
     await updateUserCredits(updatedCreditsLeft, email);
 
+    revalidatePath("/profile");
+
     const listOfKeywords = await callOpenai({ jobDescription });
 
-    // revalidatePath("/profile", "page");
     // console.log("revalidated");
 
     return new Response(JSON.stringify(listOfKeywords), {
