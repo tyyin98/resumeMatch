@@ -7,9 +7,6 @@ export async function getUserCredits(email: string | undefined) {
     .select("credits_left")
     .eq("userID", email)
     .single();
-
-  // console.log(`profile page`, email);
-  console.log("helllll", data?.credits_left);
   return data?.credits_left;
 }
 

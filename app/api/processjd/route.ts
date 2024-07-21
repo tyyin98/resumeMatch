@@ -9,9 +9,7 @@ export async function POST(req: Request) {
   const { jobDescription, email } = await req.json();
 
   try {
-    console.log("email:", email);
     const credits = await getUserCredits(email);
-    console.log("data", credits);
 
     if (!credits) {
       return new Response(JSON.stringify(["Out of credits"]));
@@ -23,8 +21,8 @@ export async function POST(req: Request) {
 
     const listOfKeywords = await callOpenai({ jobDescription });
 
-    revalidatePath("/profile", "page");
-    console.log("revalidated");
+    // revalidatePath("/profile", "page");
+    // console.log("revalidated");
 
     return new Response(JSON.stringify(listOfKeywords), {
       headers: {

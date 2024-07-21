@@ -4,13 +4,15 @@ import React from "react";
 import Navbar from "@/components/navbar";
 import Credits from "@/components/Credits";
 import { getUserCredits } from "@/utils/supabase/supabaseCrud";
+import { unstable_noStore } from "next/cache";
 
-export const fetchCache = "force-no-store";
-export const revalidate = 0; // seconds
-export const dynamic = "force-dynamic";
+// export const fetchCache = "force-no-store";
+// export const revalidate = 0; // seconds
+// export const dynamic = "force-dynamic";
 
 export default async function profile() {
   console.log("landed '/proile' ");
+  unstable_noStore();
 
   const supabase = createClient();
 
