@@ -1,4 +1,4 @@
-import { getUserCredits } from "@/utils/supabase/getUserCredits";
+import { getUserCredits } from "@/utils/supabase/supabaseCrud";
 
 export async function POST(req: Request) {
   const { email } = await req.json();

@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 import Navbar from "@/components/navbar";
 import Credits from "@/components/Credits";
-import { getUserCredits } from "@/utils/supabase/getUserCredits";
+import { getUserCredits } from "@/utils/supabase/supabaseCrud";
 
 export const fetchCache = "force-no-store";
 export const revalidate = 0; // seconds

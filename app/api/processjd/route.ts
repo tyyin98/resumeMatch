@@ -1,34 +1,25 @@
 import { callOpenai } from "@/utils/callopenai";
-import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
-
-const dummy = ["apple", "orange", "peach", "cucumber"];
+import {
+  getUserCredits,
+  updateUserCredits,
+} from "@/utils/supabase/supabaseCrud";
 
 export async function POST(req: Request) {
   const { jobDescription, email } = await req.json();
-  const supabase = createClient();
-  //   console.log(resume, jobDescription);
 
   try {
-    console.log("processing jd");
-    const { data, error } = await supabase
-      .from("usage")
-      .select("credits_left")
-      .eq("userID", email)
-      .single();
+    console.log("email:", email);
+    const credits = await getUserCredits(email);
+    console.log("data", credits);
 
-    // console.log(data);
-
-    if (!data?.credits_left) {
+    if (!credits) {
       return new Response(JSON.stringify(["Out of credits"]));
     }
 
-    const updatedCreditsLeft = data.credits_left - 1;
+    const updatedCreditsLeft = credits - 1;
 
-    const { data: whatever, error: whatever2 } = await supabase
-      .from("usage")
-      .update({ credits_left: updatedCreditsLeft })
-      .eq("userID", email);
+    await updateUserCredits(updatedCreditsLeft, email);
 
     const listOfKeywords = await callOpenai({ jobDescription });
 
@@ -44,9 +35,3 @@ export async function POST(req: Request) {
     console.error("Error: ", error);
   }
 }
-
-// export function GET() {
-//   return new Response("GETTT");
-// }
-
-// export function POST(request: Request) {}
