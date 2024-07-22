@@ -50,9 +50,10 @@ export default function ResumeMatch({ email }: { email: string | undefined }) {
           </div>
         </button>
       </form>
+
       {keywords && (
         <div>
-          <h2>Keywords:</h2>
+          <h2> Keywords:</h2>
           {isLoading ? <div>Loading...</div> : null}
           <ul>
             {keywords.map((keyword: any, index: any) => (

@@ -1,16 +1,18 @@
-import DeployButton from "@/components/DeployButton";
-import AuthButton from "@/components/AuthButton";
 import { createClient } from "@/utils/supabase/server";
-import FetchDataSteps from "@/components/tutorial/FetchDataSteps";
 import Header from "@/components/Header";
 import { redirect } from "next/navigation";
 import ResumeMatch from "@/components/ResumeMatch/ResumeMatch";
-import ResumeMatchComp from "@/components/ResumeMatch/ReSumeMatchUseComp";
-import Logo from "@/components/Logo";
 import Navbar from "@/components/navbar";
-// import { useChat } from "ai/react";
+import { getUserCredits } from "@/utils/supabase/supabaseCrud";
+import { unstable_noStore as noStore } from "next/cache";
+
+export const fetchCache = "force-no-store";
+export const revalidate = 0; // seconds
+export const dynamic = "force-dynamic";
 
 export default async function ProtectedPage() {
+  noStore();
+
   const supabase = createClient();
 
   const {
@@ -21,19 +23,15 @@ export default async function ProtectedPage() {
     return redirect("/login");
   }
 
-  console.log(user.email);
+  // console.log(user.email);
+  const credits = getUserCredits(user.email);
 
   return (
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
       <div className="w-full">
         <Navbar />
-        {/* <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-          <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
-            <Logo />
-            <AuthButton />
-          </div>
-        </nav> */}
       </div>
+      <div>credits available: {credits}</div>
 
       <div className="flex-1 flex flex-col gap-20 max-w-4xl px-3">
         <Header />

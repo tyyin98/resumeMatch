@@ -6,7 +6,7 @@ import {
   updateUserCredits,
 } from "@/utils/supabase/supabaseCrud";
 
-export const revalidate = true;
+// export const revalidate = true;
 
 export async function POST(req: Request) {
   const { jobDescription, email } = await req.json();
@@ -23,6 +23,7 @@ export async function POST(req: Request) {
     await updateUserCredits(updatedCreditsLeft, email);
 
     revalidatePath("/profile");
+    revalidatePath("/protected");
 
     const listOfKeywords = await callOpenai({ jobDescription });
 
