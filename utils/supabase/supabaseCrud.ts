@@ -1,3 +1,4 @@
+"use server";
 import { createClient } from "@/utils/supabase/server";
 import { cache } from "react";
 
@@ -36,4 +37,13 @@ export async function updateUserCredits(
   } catch (error) {
     return { error };
   }
+}
+
+export async function decUserCredits(email: string | undefined) {
+  const supabase = createClient();
+
+  const current_credits = await getUserCredits(email);
+  const new_credits = current_credits - 1;
+
+  await updateUserCredits(new_credits, email);
 }

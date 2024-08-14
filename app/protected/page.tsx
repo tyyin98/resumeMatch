@@ -5,14 +5,10 @@ import ResumeMatch from "@/components/ResumeMatch/ResumeMatch";
 import Navbar from "@/components/navbar";
 import { getUserCredits } from "@/utils/supabase/supabaseCrud";
 import { unstable_noStore as noStore } from "next/cache";
-
-export const fetchCache = "force-no-store";
-export const revalidate = 0; // seconds
-export const dynamic = "force-dynamic";
+import ResumeMatchServer from "@/components/ResumeMatch/ResumeMatchServer";
 
 export default async function ProtectedPage() {
   noStore();
-
   const supabase = createClient();
 
   const {
@@ -24,19 +20,20 @@ export default async function ProtectedPage() {
   }
 
   // console.log(user.email);
-  const credits = getUserCredits(user.email);
+  // const credits = getUserCredits(user.email);
 
   return (
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
       <div className="w-full">
         <Navbar />
       </div>
-      <div>credits available: {credits}</div>
+      {/* <div>credits available: {credits}</div> */}
 
       <div className="flex-1 flex flex-col gap-20 max-w-4xl px-3">
         <Header />
         <main className="flex flex-col gap-6">
           <ResumeMatch email={user.email} />
+          {/* <ResumeMatchServer email={user.email} /> */}
         </main>
       </div>
 

@@ -8,7 +8,7 @@ import {
 
 // export const revalidate = true;
 
-export async function POST(req: Request) {
+export async function PUT(req: Request) {
   const { jobDescription, email } = await req.json();
 
   try {
